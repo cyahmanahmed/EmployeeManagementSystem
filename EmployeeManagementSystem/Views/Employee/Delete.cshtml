@@ -1,0 +1,46 @@
+﻿@model EmployeeManagementSystem.Models.Employee
+
+@{
+    ViewData["Title"] = "Delete Employee";
+}
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold text-danger">Confirm Deletion</h2>
+        <a asp-action="Index" class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-left"></i> Back to List
+        </a>
+    </div>
+
+    <div class="alert alert-warning">
+        <strong>Warning:</strong> This action will deactivate the employee record (soft delete). The employee will not appear in the active list but will remain in the database.
+    </div>
+
+    <div class="card shadow-sm border-0 mb-4">
+        <div class="card-body">
+            <dl class="row mb-0">
+                <dt class="col-sm-3">First Name</dt>
+                <dd class="col-sm-9">@Model.FirstName</dd>
+
+                <dt class="col-sm-3">Last Name</dt>
+                <dd class="col-sm-9">@Model.LastName</dd>
+
+                <dt class="col-sm-3">Age</dt>
+                <dd class="col-sm-9">@Model.Age</dd>
+
+                <dt class="col-sm-3">Department</dt>
+                <dd class="col-sm-9">@Model.Department?.DepartmentName</dd>
+            </dl>
+        </div>
+    </div>
+
+    <form asp-action="SoftDelete" method="post" class="d-flex gap-2">
+        <input type="hidden" name="id" value="@Model.EmployeeID" />
+        <button type="submit" class="btn btn-danger">
+            <i class="bi bi-trash"></i> Soft Delete
+        </button>
+        <a asp-action="Index" class="btn btn-secondary">
+            <i class="bi bi-x-circle"></i> Cancel
+        </a>
+    </form>
+</div>

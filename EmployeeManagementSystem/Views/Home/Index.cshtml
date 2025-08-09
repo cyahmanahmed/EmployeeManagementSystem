@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container mt-5">
+    <div class="text-center mb-5">
+        <h1 class="display-5 fw-bold text-primary">Employee Management System</h1>
+        <p class="lead text-muted">Manage employees and departments in an efficient and organized way.</p>
+    </div>
+
+    <div class="row justify-content-center">
+        <!-- Employee Card -->
+        <div class="col-md-5 mb-4">
+            <div class="card border-0 shadow feature-card h-100">
+                <div class="card-body text-center">
+                    <i class="bi bi-person-badge display-4 text-primary mb-3"></i>
+                    <h4 class="card-title fw-semibold">Employee Management</h4>
+                    <p class="card-text">Create, update, and view employee records and details.</p>
+                    <a asp-controller="Employee" asp-action="Index" class="btn btn-outline-primary mt-2">
+                        Manage Employees
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Department Card -->
+        <div class="col-md-5 mb-4">
+            <div class="card border-0 shadow feature-card h-100">
+                <div class="card-body text-center">
+                    <i class="bi bi-building display-4 text-success mb-3"></i>
+                    <h4 class="card-title fw-semibold">Department Management</h4>
+                    <p class="card-text">Assign employees and manage departments easily.</p>
+                    <a asp-controller="Department" asp-action="Index" class="btn btn-outline-success mt-2">
+                        Manage Departments
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

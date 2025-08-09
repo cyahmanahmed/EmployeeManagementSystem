@@ -1,0 +1,74 @@
+﻿@model IEnumerable<EmployeeManagementSystem.Models.Employee>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<h2 class="fw-bold text-primary">Employee</h2>
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <a asp-action="Create" class="btn btn-success shadow-sm">
+            <i class="bi bi-person-plus-fill me-1"></i> Add New Employee
+        </a>
+    </div>
+
+    @* Search For *@
+    <form asp-action="Search" method="get" class="row g-2 mb-3">
+        <div class="col-md-6">
+            <input class="form-control border-primary shadow-sm" type="text" name="query" placeholder="Search by department name..." />
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary shadow-sm">
+                <i class="bi bi-search"></i> Search
+            </button>
+        </div>
+    </form>
+
+    @* Filter Form  *@
+    <form asp-action="Index" method="get" class="row g-2 mb-4">
+        <div class="col-md-4">
+            <input class="form-control border-secondary shadow-sm" type="number" name="minAge" placeholder="Filter by minimum age..." />
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-secondary shadow-sm">
+                <i class="bi bi-funnel-fill"></i> Apply Filter
+            </button>
+        </div>
+    </form>
+
+    @* Table *@
+    <div class="table-responsive shadow-sm rounded">
+        <table class="table table-bordered table-striped table-hover align-middle">
+            <thead class="table-dark text-center">
+                <tr>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Age</th>
+                    <th>Department</th>
+                    <th style="width: 200px;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var employee in Model)
+                {
+                    <tr>
+                        <td>@employee.FirstName</td>
+                        <td>@employee.LastName</td>
+                        <td>@employee.Age</td>
+                        <td>@employee.Department?.DepartmentName</td>
+                        <td class="text-center text-nowrap">
+                            <a asp-action="Edit" asp-route-id="@employee.EmployeeID" class="btn btn-sm btn-maroon me-1">
+                                <i class="bi bi-pencil-fill"></i> Edit
+                            </a>
+                            <a asp-action="Details" asp-route-id="@employee.EmployeeID" class="btn btn-sm btn-outline-secondary me-1">
+                                <i class="bi bi-info-circle-fill"></i> Details
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@employee.EmployeeID" class="btn btn-sm btn-outline-danger">
+                                <i class="bi bi-trash-fill"></i> Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

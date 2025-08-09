@@ -1,0 +1,63 @@
+﻿@model EmployeeManagementSystem.Models.Employee
+
+@{
+    ViewData["Title"] = "Create Employee";
+}
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold">Create New Employee</h2>
+        <a asp-action="Index" class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-left"></i> Back to List
+        </a>
+    </div>
+
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+            <form asp-action="Create" method="post" class="needs-validation" novalidate>
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="mb-3">
+                    <label asp-for="FirstName" class="form-label"></label>
+                    <input asp-for="FirstName" class="form-control" placeholder="Enter first name" />
+                    <span asp-validation-for="FirstName" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="LastName" class="form-label"></label>
+                    <input asp-for="LastName" class="form-control" placeholder="Enter last name" />
+                    <span asp-validation-for="LastName" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Age" class="form-label"></label>
+                    <input asp-for="Age" class="form-control" placeholder="Enter age" />
+                    <span asp-validation-for="Age" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-4">
+                    <label asp-for="DepartmentID" class="form-label">Department</label>
+                    <select asp-for="DepartmentID" asp-items="ViewBag.DepartmentList" class="form-select">
+                        <option value="">-- Select Department --</option>
+                    </select>
+                    <span asp-validation-for="DepartmentID" class="text-danger small"></span>
+                </div>
+
+                <div class="d-flex justify-content-end gap-2">
+                    <button type="submit" class="btn btn-primary px-4">
+                        <i class="bi bi-check-circle me-1"></i> Create
+                    </button>
+                    <a asp-action="Index" class="btn btn-secondary px-4">
+                        <i class="bi bi-x-circle me-1"></i> Cancel
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

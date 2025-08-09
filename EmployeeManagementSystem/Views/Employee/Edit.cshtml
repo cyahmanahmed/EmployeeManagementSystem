@@ -1,0 +1,71 @@
+﻿@model EmployeeManagementSystem.Models.Employee
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Employee</h4>
+<hr />
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold">Edit Employee</h2>
+        <a asp-action="Index" class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-left"></i> Back to List
+        </a>
+    </div>
+
+    <form asp-action="Edit" method="post" class="needs-validation" novalidate>
+        <input type="hidden" asp-for="EmployeeID" />
+
+        <div class="mb-3">
+            <label asp-for="FirstName" class="form-label"></label>
+            <input asp-for="FirstName" class="form-control" />
+            <span asp-validation-for="FirstName" class="text-danger small"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="LastName" class="form-label"></label>
+            <input asp-for="LastName" class="form-control" />
+            <span asp-validation-for="LastName" class="text-danger small"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Age" class="form-label"></label>
+            <input asp-for="Age" class="form-control" />
+            <span asp-validation-for="Age" class="text-danger small"></span>
+
+            @if (Model?.Age > 65)
+            {
+                <div class="form-text text-success mt-2">Enjoy your retirement!</div>
+            }
+
+
+        </div>
+
+        <div class="mb-4">
+            <label asp-for="DepartmentID" class="form-label">Department</label>
+            <select asp-for="DepartmentID" asp-items="ViewBag.DepartmentList" class="form-select" disabled>
+                <option value="">-- Select Department --</option>
+            </select>
+            <input type="hidden" asp-for="DepartmentID" />
+            <span asp-validation-for="DepartmentID" class="text-danger small"></span>
+        </div>
+
+        <div class="d-flex justify-content-end gap-2">
+            <button type="submit" class="btn btn-primary">
+                <i class="bi bi-save"></i> Save Changes
+            </button>
+            <a asp-action="Index" class="btn btn-secondary">
+                <i class="bi bi-x-circle"></i> Cancel
+            </a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

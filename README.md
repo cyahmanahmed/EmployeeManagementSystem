@@ -9,13 +9,13 @@
 
 <h3 align="left">Key Features:</h3>
 <ul>
-<li>CRUD operations for employee profiles</li>
-<li>Role and department management</li>
-<li>Attendance and leave tracking</li>
-<li>Responsive UI with Bootstrap</li>
-<li>Reports generation and export functionality</li>
-<li>Secure login with role-based permissions</li>
+  <li>CRUD operations for employee profiles</li>
+  <li>Role and department management</li>
+  <li>Database integration with SQL Server for persistent data storage</li>
+  <li>Responsive UI with Bootstrap</li>
+  <li>Data validation to ensure input accuracy</li>
 </ul>
+
 
 <h3 align="left">Technologies:</h3>
 <p align="left">
